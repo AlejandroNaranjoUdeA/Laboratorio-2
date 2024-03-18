@@ -61,6 +61,18 @@ void inicializarSala(char** );
 void reservarAsiento(char** , char , int );
 void cancelarReserva(char** , char , int );
 
+//PROBLEMA 12:
+extern int **puntero_matriz, numero_filas; //no se necesita el numero de columnas ya que la matriz es cuadrada
+void pedirDatosDeMatriz();
+bool esCuadradoMagico();
+
+//PROBLEMA 13:
+void pedirDatosImagen(int , int , int **);
+int contarEstrellas(int **, int , int );
+
+
+
+
 
 
 

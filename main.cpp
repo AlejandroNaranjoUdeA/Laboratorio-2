@@ -458,3 +458,85 @@ int main() {
     return 0;
 }
 */
+
+//PROBLEMA 12:
+/*
+Un cuadrado mágico es una matriz de números enteros sin repetir, en la que la suma de los números
+en cada columna, cada fila y cada diagonal principal tienen como resultado la misma constante. Escriba un programa
+que permita al usuario ingresar una matriz cuadrada, imprima la matriz y verifique si la matriz es un cuadrado
+mágico.
+Nota: un ejemplo de cuadrado mágico es el siguiente:
+4 9 2
+3 5 7
+8 1 6
+*/
+/*
+int main(){
+
+    pedirDatosDeMatriz();
+
+    if(esCuadradoMagico()==true){
+        cout<<"\n\nLa matriz ingresada es un cuadrado magico."<<endl<<endl;
+    }
+    else{
+        cout<<"\n\nLa matriz ingresada no es un cuadrado magico"<<endl<<endl;
+    }
+
+    //liberar la memoria dinamica utilizada:
+    for(int i=0; i<numero_filas; i++){
+        delete[] puntero_matriz[i]; //liberando espacio de las columnas
+    }
+    delete[] puntero_matriz; //liberando espacio de las filas
+
+    return 0;
+}
+*/
+
+//PROBLEMA 13:
+/*
+Se tiene una fotografía digitalizada de una porción de la galaxia NGC 1300 que está ubicada a 61.000.000 de
+años luz del planeta Tierra. La representación digital de la imagen está constituida por una matriz de números
+enteros; en la cual, cada uno representa la cantidad de luz en ese punto de la imagen, así:
+
+0 3 4 0 0 0 6 8
+5 13 6 0 0 0 2 3
+2 6 2 7 3 0 10 0
+0 0 4 15 4 1 6 0
+0 0 7 12 6 9 10 4
+5 0 6 10 6 4 8 0
+
+Se puede determinar si el elemento ai,,j de la matriz representa una estrella si se cumple que:
+(𝑎𝑎𝑖𝑖,𝑗𝑗 + 𝑎𝑎𝑖𝑖,𝑗𝑗−1 + 𝑎𝑎𝑖𝑖,𝑗𝑗+1 + 𝑎𝑎𝑖𝑖−1,𝑗𝑗 + 𝑎𝑎𝑖𝑖+1,𝑗𝑗)/5 >  6
+
+Elabora y prueba una función que reciba un puntero a la matriz de enteros como argumento y que retorne el
+número de estrellas encontradas en la imagen. Ignora las posibles estrellas que puedan existir en los bordes de la
+matriz.
+*/
+/*
+int main(){
+
+    int filas, columnas, **p_matriz;
+
+    cout<<"Ingrese el numero de filas de la imagen: "; cin>>filas;
+    cout<<"Ingrese el numero de columnas de la imagen: "; cin>>columnas;
+
+    p_matriz= new int *[filas]; //reservando memoria dinamica para las filas
+    for(int i=0; i<filas; i++){
+        p_matriz[i] = new int[columnas]; //reservando memoria dinamica para las columnas
+    }
+    pedirDatosImagen(filas, columnas, p_matriz);
+
+    int resultado= contarEstrellas(p_matriz, filas, columnas);
+    cout<<"\n\nEl numero de estrellas contadas en la imagen es de: "<<resultado<<endl<<endl;
+
+    for(int i=0; i<filas; i++){
+        delete[] p_matriz[i]; //eliminando espacio de memoria dinamica para las columnas
+    }
+    delete[] p_matriz; //eliminando espacio de memoria dinamica para las filas
+}
+*/
+
+//PROBLEMA 14:
+/*
+
+*/

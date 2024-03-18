@@ -1,8 +1,9 @@
 #include<iostream>
 #include<conio.h>
-#include<stdlib.h>
+#include<stdlib.h> //libreria para new y delete
 #include<cstring>
 #include<string>
+#include"funciones.h"
 using namespace std;
 
 
@@ -293,3 +294,74 @@ void cancelarReserva(char** sala, char fila, int asiento) {
         cout << "Fila o asiento no valido." << endl;
     }
 }
+
+// PROBLEMA 12:
+
+int **puntero_matriz, numero_filas;
+
+void pedirDatosDeMatriz(){
+    cout<<"Ingrese el numero de filas de la matriz: "; cin>>numero_filas;
+
+    //reservando memoria dinamica:
+    puntero_matriz= new int* [numero_filas]; //reservando memoria dinamica para las filas
+    for(int i=0; i<numero_filas; i++){
+        puntero_matriz[i]= new int[numero_filas]; //reservando memoria dinamica para las columnas
+    }
+
+    cout<<"\n\nPidiendo datos al usuario: "; cout<<endl;
+    for(int i=0; i<numero_filas; i++){
+        for(int j=0; j<numero_filas; j++){
+            cout<<"Ingrese el dato de la posicion ["<<i<<"]["<<j<<"]: ";
+            cin>>*(*(puntero_matriz+i)+j);
+        }
+    }
+}
+
+bool esCuadradoMagico(){
+    int suma_objetivo;
+    for(int i=0; i<numero_filas; i++){
+        suma_objetivo += *(*puntero_matriz+i); //suma de la primera fila.
+    }
+
+    //verificar suma de filas y columnas
+    for(int i=0; i<numero_filas; i++){
+        int suma_fila=0, suma_columna=0;
+        int **puntero_filas = puntero_matriz+i, /* este +i permite el cambio de fila.*/ **puntero_columnas= puntero_matriz;
+        for(int j=0; j<numero_filas; j++){
+            suma_fila += *(*puntero_filas+j);
+            suma_columna += *(*(puntero_columnas+j)+i); //al sumar el j solo cambiamos de fila, y como i permanece constante en este for, no cambia la columna.
+        }
+        if((suma_fila != suma_objetivo)||(suma_columna != suma_objetivo)){
+            return false;
+        }
+    }
+
+    //no es necesario verificar si las diagonales tambien suman lo mismo ya que es una de las propiedades de los cuadrados magicos.
+    //Si todas sus filas y columnas suman lo mismo, automaticamente, sus diagonales tambien tienen que dar lo mismo.
+
+}
+
+//PROBLEMA 13:
+void pedirDatosImagen(int filas, int columnas, int **p_matriz){
+    cout << "\n\nIngrese los elementos de la matriz:" << endl<<endl;
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            cout << "Ingrese el elemento en la posicion [" << i << "][" << j << "]: ";
+            cin >> *(*(p_matriz+i)+j);
+        }
+    }
+}
+
+int contarEstrellas(int **p_matriz, int filas, int columnas) {
+    int estrellas = 0;
+    for (int i = 1; i < filas - 1; i++) { //se empieza desde 1 hasta filas - 1 ya que se nos indique que ignoremos los bordes
+        for (int j = 1; j < columnas - 1; j++) {
+            if (((*( *(p_matriz + i) + j) + *( *(p_matriz + i) + (j - 1)) + *( *(p_matriz + i) + (j + 1)) + *( *(p_matriz + (i - 1)) + j) + *( *(p_matriz + (i + 1)) + j))/5) > 6){
+                estrellas++;
+            }
+        }
+    }
+    return estrellas;
+}
+
+
